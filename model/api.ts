@@ -14,6 +14,7 @@ import { User } from './user';
 import { Page } from './page';
 import { ApiLinks } from './apiLinks';
 import { Plan } from './plan';
+import { View } from './view';
 
 
 /**
@@ -64,7 +65,7 @@ export interface Api {
     /**
      * List of views this API belongs to.
      */
-    views?: Array<string>;
+    views?: Array<View>;
     rating_summary?: RatingSummary;
     _links?: ApiLinks;
     /**
