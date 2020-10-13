@@ -50,6 +50,7 @@ export interface GetSubscriptionsRequestParams {
 
 export interface RenewKeySubscriptionRequestParams {
     subscriptionId: string;
+    customApiKey?: string;
     request_body?: Array<string>;
 }
 
@@ -308,7 +309,13 @@ export class SubscriptionService {
         if (subscriptionId === null || subscriptionId === undefined) {
             throw new Error('Required parameter subscriptionId was null or undefined when calling renewKeySubscription.');
         }
+        const customApiKey = requestParameters.customApiKey;
         const request_body = requestParameters.request_body;
+
+        let queryParameters = new HttpParams({encoder: this.encoder});
+        if (customApiKey !== undefined && customApiKey !== null) {
+            queryParameters = queryParameters.set('customApiKey', <any>customApiKey);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -339,6 +346,7 @@ export class SubscriptionService {
         return this.httpClient.post<Key>(`${this.configuration.basePath}/subscriptions/${encodeURIComponent(String(subscriptionId))}/keys/_renew`,
             request_body,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

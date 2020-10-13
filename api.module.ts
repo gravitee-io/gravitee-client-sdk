@@ -8,6 +8,7 @@ import { ApiService } from './api/api.service';
 import { ApplicationService } from './api/application.service';
 import { AuthenticationService } from './api/authentication.service';
 import { GroupService } from './api/group.service';
+import { KeysService } from './api/keys.service';
 import { PermissionsService } from './api/permissions.service';
 import { PortalService } from './api/portal.service';
 import { SubscriptionService } from './api/subscription.service';
@@ -24,6 +25,7 @@ import { UsersService } from './api/users.service';
     ApplicationService,
     AuthenticationService,
     GroupService,
+    KeysService,
     PermissionsService,
     PortalService,
     SubscriptionService,
